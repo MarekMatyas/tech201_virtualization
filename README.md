@@ -13,3 +13,9 @@
 
 **Cost** - Cost is often overlooked. We need to make sure the company is being as efficient as possible in it’s tech dealings. (For example how powerful a machine do we need to conduct a task ? Do we need certain servers running? etc
 
+
+### ***Monotlith***
+A monolithic architecture is a singular, large computing network with one code base that couples all of the business concerns together.
+
+To make a change to this sort of application requires udating the entire stack by accessing the code base and building and deploying an updated version of the service-side interface.
+
