@@ -3,6 +3,29 @@
 
 ## Introduction
 
+
+
+
+### Cloud
+
+
+
+Cloud computing is a way of using the Internet to access and store information and technology services, such as computing power, storage space, and software. It offers several benefits over traditional ways of computing, including:
+
+- Flexibility: You can easily adjust the amount of computing resources you use, depending on your needs.
+- Cost-effective: You only pay for what you use, and don't need to invest in expensive hardware.
+- Reliable: Cloud service providers typically offer high levels of uptime, ensuring your information and services are always available.
+- Accessible from anywhere: You can access your information and services from any device with an internet connection.
+- Disaster recovery: Your information and services are protected against natural disasters and other disruptions.
+- Better collaboration: You and your team can work together more effectively using cloud-based tools and services.
+- Safe and secure: Your information is protected by the latest security measures provided by the cloud service provider.
+- Stay up-to-date: You can take advantage of new and innovative technologies as they become available.
+- Compliance: You can meet industry regulations and standards, such as those related to privacy and data protection.
+- Eco-friendly: Cloud computing can reduce the energy consumption and carbon footprint associated with computing.
+
+
+
+
 ### 4 Things of DevOps
 
 **1.Ease of use**- Other teams are going to use the tools we create(they won’t use them if they aren’t user-friendly). If Devs do not use our tools then there will be delays in deployment down the line.
@@ -38,11 +61,11 @@ Additional notes: Do not try to mix and match!!
 If App 1 needs a program and that program conflicts with a program that App2 needs. 
 
 ## Setup: 
-1. Install Ruby:This program works with the VM creater.
+1. Install Ruby:This program works with the VM creater.: [Install link](https://rubyinstaller.org/downloads/)
 
 2. We can double check our version of Ruby in GitBash(run as admin) with command ruby --version
 
-3. Install Virtual Box: This creates VM's
+3. Install Virtual Box: This creates VM's: [Install link]( https://www.virtualbox.org/wiki/Download_Old_Builds_6_1)
 
 4. Go to "Turn Windows on and off" and make sure that Hyper-V is disabled and Virtual Machine Platform and Windows Hypervisor Platform is enabled.
 
