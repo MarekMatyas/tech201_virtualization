@@ -80,7 +80,31 @@ Use `''` single quotes to cd(change directory) to the right folder. Please follo
 
 ![GitBash cd issue]("C:\Users\matya\Desktop\git bash issue.png")
 
-7. After that we can open back the GitBash and write a command `vagrant init ubuntu/xenial64`. This creates a file in VS code. Only configuration file (We haven't actually created a VM yet).
+7. After that we can open back the GitBash and write a command `vagrant init ubuntu/xenial64`. This creates a file in VS code. Only configuration file (We haven't actually created a VM yet). This file contains instructions that are used to give to our Virtual Box.
+Enables us to standardize the dev environment that we are giving to our Developers.
+
+8. Now we want to test the functionality running `vagrant up` in GitBash. Check Oracle if the machine is running)
+
+9. Then we check the functionality `vagrant status`.
+
+10. If we all running with no issues we want to connect to it using `vagrant ssh` in GitBash.
+(This program handles all security processes for us)
+ 
+11. Then we can use `ls -a` to show all the folders + hidden folders.
+
+12. Then we can start using `sudo` code which basically means that we wanna get right premissions. We want to start using the web server:#####
+
+12. Now that we are in `vagrant@ubuntu-xenial` we can notice how the colours disappeared.
+
+13. Being inside the VM we can run `sudo apt-get update -y`. This command will update the core function of our VM. Also comfirms the access to the Internet.
+
+14. After we use `sudo apt-get install nginx -y` to install program for our website.
+
+15. Next step is to use `sudo systemctl start nginx`. Lastly `sudo systemctl status nginx`.
+
+16. For easier access for developers we have to use this command `config.vm.network "private_network", ip:"192.168.10.100"`. (This gives our VM an IP address to access)
+
+17. Then we can back out of the VM using `exit` command and use `vagrant reload` to reboot the VM.
 
 
 To connect to the machine vagrant ssh in git bash then we should be inside the machine 
@@ -91,3 +115,9 @@ Sudo systemctl start nginx
 Sudo systemctl status nginx
 Exit
 Vagrant reload
+
+
+
+## Linux 
+
+
