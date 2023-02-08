@@ -100,7 +100,92 @@ You can use `mv` to rename to a file as well
 ### Wild cards
 Allows to specifies characters and match certain things
 `ls f*` shows me all the folders with "f" in it
-It can be a word also
+It can be a word also.
+
+`sudo chmod u+x <name of the file>`
+
+
+
+## Premissions 
+
+
+- `ls -l`
+`drwxrwxr-x 2 vagrant vagrant 4096 Feb  8 20:13 new_folder1`
+`drwxrwxr-x 3 vagrant vagrant 4096 Feb  8 20:13 new_folder2`
+
+`r` - read premissions ( you may view)
+
+`w` - write premissions ( you may change the content)
+
+`x` - execute a file (means you can actaully run that program)
+
+`drwxrwxr-x`  Owner(1.rwx) -> Group(rwx) -> Others/All (You can't modify it)
+
+### To modify
+
+ - `sudo chmod` sudo being (super user do) chmod(change file, mode bits(premissions))
+
+- `sudo chmod u+x <name of the file>` (u- meaning users,)
+
+- u - user
+- o - other
+- `sudo chmod 777 emptyfile.txt` give all the premissions to everyone 
+
+`4 = read, 2 = write, 1 = execute` 
+
+
+User - Group - Other
+
+                 Read      Write     Execute
+Setting           0          0          0
+Binary Value:     4          2          1
+
+Because 4 + 2 + 1 = 7
+- `777` -> means All premissions for all users/groups/other
+
+- `755` -> User can do everything, group and other can read and execute
+
+- `541` -> User can read and execute, groups can read only, other can execute
+
+- `764` -> All premission for User, groups can read and write, other can read only
+
+### Process management
+
+- `top` is a task manager in the terminal
+
+- `sleep 120 &`
+
+- `ps` shows the running processes
+
+- `kill + number of the process` kills the process
+
+- `kill -9 + number of the process` Gets rid of the process. `(&)` means makes it run in the background (doesnt lock you out of the terminal, you won't have to wait) 
+
+- `fg` means foreground 
+
+If you dont want to be locked out use `control+z` to stop the process.
+
+- `sudo apt install tree -y` install the tree to list out the folders and files. 
+
+- `tree` to display the tree
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
