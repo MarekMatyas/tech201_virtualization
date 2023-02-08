@@ -6,9 +6,9 @@ We want to interact with our VM.
 
 - `uname -a`- Gives us the entire information(shorter version of uname --all)
 
-- `uname -s` - gives us the OS as well
+- `uname -s` - gives us the OS as well(kernel name)
 
-- `uname -m`- gives us the system info
+- `uname -m`- gives us the system info(hardware name)
 
 - `uname -si` - os platform
 
@@ -56,13 +56,16 @@ https://www.mysite.com/myfolder/subfolder/sub/sub2/page1/html
 
 - `mkdir` - Making a new directory (folder)
 
-- `cp emptyfile.txt copied_file.txt` - to copy a file 
+### Copying 
+
+- `cp emptyfile.txt(name of the file to be copied) copied_file.txt (name of the new file)` - to copy a file 
 
 - `cp -rf new_new_folder new_folder2` to copy a folder 
 
 - `~` takes you to your home as user 
 
-- `rsync -r new_folder1 new_folder2` (syncs up the folders)
+- `rsync -r new_folder1 new_folder2` (syncs up the folders) 
+This is a command to copy the contents of new_folder1 to new_folder2 using the rsync utility in the bash shell. The -r option tells rsync to copy the contents of new_folder1 recursively, which means it will copy all files and subdirectories within new_folder1 to new_folder2.
 
 
 ### Moving files
@@ -81,7 +84,8 @@ You can use `mv` to rename to a file as well
 
 - `rm copied_file.txt` delete a file 
 
-- `rm -rf new_folder` to delete a folder (r-everything inside that folder will get manipulated f- force)
+- `rm -rf new_folder` to delete a folder (r-everything inside that folder will get manipulated f- force)Removes everything inside that folder
+- `rm -rf` This deletes everything !! ***Never use this command!!***  
 
 
 - `man ls` Detail look of what we can do in the terminal
