@@ -36,3 +36,35 @@ As Devops engineers one of our jobs is to create these areas ( We have to choose
 Additional notes: Do not try to mix and match!!
 
 If App 1 needs a program and that program conflicts with a program that App2 needs. 
+
+## Setup: 
+1. Install Ruby:This program works with the VM creater.
+
+2. We can double check our version of Ruby in GitBash(run as admin) with command ruby --version
+
+3. Install Virtual Box: This creates VM's
+
+4. Go to "Turn Windows on and off" and make sure that Hyper-V is disabled and Virtual Machine Platform and Windows Hypervisor Platform is enabled.
+
+5. Install Vagrant from their official website(the install may require a restart of your machine)
+To double check it has been install you can open GitBash (run as admin) and type `vagrant --version`.
+That should print out the following message if the install was succesful `Vagrant 2.2.7`.
+
+6. In GitBash you have to navigate to the right folder with `pwd` command.
+If you encounter a problem with that it could be an issue of the folder having a space in the name.
+
+Use `''` single quotes to cd(change directory) to the right folder. Please follow these instruction:
+
+
+
+7. After that we can open back the GitBash and write a command `vagrant init ubuntu/xenial64`. This creates a file in VS code. Only configuration file (We haven't actually created a VM yet).
+
+
+To connect to the machine vagrant ssh in git bash then we should be inside the machine 
+
+ Sudo apt-get update -y downloads all the updates9 (confirms the access to internet)
+ Sudo apt-get install nginx -y (installs programs)
+Sudo systemctl start nginx
+Sudo systemctl status nginx
+Exit
+Vagrant reload
