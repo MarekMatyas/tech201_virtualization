@@ -78,7 +78,7 @@ If you encounter a problem with that it could be an issue of the folder having a
 
 Use `''` single quotes to cd(change directory) to the right folder. Please follow these instruction:
 
-![](git bash issue.PNG)
+![](iss.png)
 
 7. After that we can open back the GitBash and write a command `vagrant init ubuntu/xenial64`. This creates a file in VS code. Only configuration file (We haven't actually created a VM yet). This file contains instructions that are used to give to our Virtual Box.
 Enables us to standardize the dev environment that we are giving to our Developers.
