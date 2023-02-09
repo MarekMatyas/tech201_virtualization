@@ -78,8 +78,7 @@ If you encounter a problem with that it could be an issue of the folder having a
 
 Use `''` single quotes to cd(change directory) to the right folder. Please follow these instruction:
 
-
-![git bash issue]("C:\Users\matya\Desktop\git bash issue.png")
+![](git bash issue.PNG)
 
 7. After that we can open back the GitBash and write a command `vagrant init ubuntu/xenial64`. This creates a file in VS code. Only configuration file (We haven't actually created a VM yet). This file contains instructions that are used to give to our Virtual Box.
 Enables us to standardize the dev environment that we are giving to our Developers.
@@ -121,61 +120,68 @@ Vagrant reload
 
 
 
-We imported the *app* and *environment* into our directory with the vagrant file after destroying current machine.
+We imported the *app* and *environment* into our directory with the vagrant file after destroying current machine. (Dont forget to extract them first and insert them into the directory with the vagrant file)
 
 Then we use this code in our Vagrant file `config.vm.synced_folder "app", "/home/vagrant/app"` to specify what to work with(app) and where we want to go. 
 
-- We need to cd into `environment` and then cd into `spec-tests`
+- We need to cd into `environment` and then cd into `spec-tests` in VS code.
 
 
-- Then in the terminal we have to navigate to environment and spec test and then `gem install bundler`
+- Then in the terminal we have to navigate (cd) to `environment` and `spec test` and then we run `gem install bundler`. This command is used to install the `bundler` gem, which is a gem management tool for **Ruby** projects.
 
-- Then run `bundle`
+- Then run `bundle`. This is used to install all the required gems, update the gems to the latest versions or resolve any version conflicts between gems.
 
 - Then run `rake spec` to run the tests (check for any failures that need to be fixed)
 
-After that we need to fix all the errors we received in VS terminal. We do that in GitBash with following steps:
+- After that we need to fix all the errors we received in VS terminal. We do that in GitBash with following steps:
 
-- Then in GitBash we run `sudo apt-get update -y` to update packages
+- In GitBash we run `sudo apt-get update -y` to update packages
 
 - Then we run `sudo apt-get upgrade -y` to actually makes the changes that we updated (install changes)
 
-- Then we run `sudo apt-get install nginx -y`
+- Then we run `sudo apt-get install nginx -y` This is used to install the `nginx` software package.
 
-- After that we run   `sudo systemctl enable nginx` to enable the system. Then we can open our browser to double check if nginx is working properly by typing the IP address from our Vagrant file 
+- After that we run   `sudo systemctl enable nginx` to enable the system.
 
-Then we check the failures again `rake spec`
+-  Then we can open our browser to double check if nginx is working properly by typing the IP address from our Vagrant file 
+
+- Then we check the failures again `rake spec`
 
  and we follow with these commands in GitBash: 
 
  ### Install nodejs
 
-- `sudo apt-get install python-software-properties`
+- `sudo apt-get install python-software-properties` This serves to install `python-software-properties` package.
 
-- `curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -`
+- `curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -`. This command is used to install Node.js in Linux system including those running GitBash. The command will download and execute a shell script that sets up the Node.js and prepares the system for installing Node.js using the following `apt-get` command.
 
-- `sudo apt-get install nodejs -y`
+- `sudo apt-get install nodejs -y` This install the Node.js
 
-then we do `rake spec` again 
+- To check if that particular failure has gone we can run `rake spec` in out VS terminal. 
 
 
-then to fix the last failure we use this code 
+- Then we move onto fixing the remaining failures 
 
 ### Install pm2
 
-- ` sudo npm install pm2 -g`
+- To install pm2 package we run `sudo npm install pm2 -g` to install pm2 package globally (`-g`).
 
-and then `rake spec` to see if we have anymore failures 
+- Again we should run `rake spec` in our VS code terminal to see if we have anymore failures.
 
-then in have to `cd app`
+- In GitBash `cd app` will change th current working directory to the `app` directory.
+If the `app` folder exists in the current working directory, the command will change to that directory. 
 
-then `npm install`
+### Note:
+
+- If the directory does not exits in the correct location, the command in return an error message indicating that the directory does not exist. 
+
+-  `npm install` command is used to get all the necessary files for a Node.js. It does this by reading the `package.json` file and downloading the necessary files and putting them in a folder called `node_modules`. This makes the project ready to use!
 
 
-then `node app.js` (output: Your app is ready and listening on port 3000)
-)
+- `node app.js` will start the Node.js application specified in the `app.js` file. The JavaScript code in the `app.js` file will be executed by the `node` tool, allowing you to run the Node.js  application on a server(output: Your app is ready and listening on port 3000).
 
-Then we go back to our browser and next our IP we input `:3000` as in the port that the app is working on
+
+- And lastly we go back to our web browser and next to our IP we input `:3000` as in the port that the app is working on.
 
 
 
