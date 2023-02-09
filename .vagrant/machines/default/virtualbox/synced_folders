@@ -1,1 +1,1 @@
-{"virtualbox":{"/vagrant":{"guestpath":"/vagrant","hostpath":"C:/Users/matya/Documents/Tech201- Virualization/Virtualization/tech201_virtualization","disabled":false,"__vagrantfile":true}}}
+{"virtualbox":{"/home/vagrant/app":{"guestpath":"/home/vagrant/app","hostpath":"C:/Users/matya/Documents/Tech201- Virualization/Virtualization/tech201_virtualization/app","disabled":false,"__vagrantfile":true},"/vagrant":{"guestpath":"/vagrant","hostpath":"C:/Users/matya/Documents/Tech201- Virualization/Virtualization/tech201_virtualization","disabled":false,"__vagrantfile":true}}}

@@ -78,7 +78,8 @@ If you encounter a problem with that it could be an issue of the folder having a
 
 Use `''` single quotes to cd(change directory) to the right folder. Please follow these instruction:
 
-![GitBash cd issue]("C:\Users\matya\Desktop\git bash issue.png")
+
+![git bash issue]("C:\Users\matya\Desktop\git bash issue.png")
 
 7. After that we can open back the GitBash and write a command `vagrant init ubuntu/xenial64`. This creates a file in VS code. Only configuration file (We haven't actually created a VM yet). This file contains instructions that are used to give to our Virtual Box.
 Enables us to standardize the dev environment that we are giving to our Developers.
@@ -92,19 +93,19 @@ Enables us to standardize the dev environment that we are giving to our Develope
  
 11. Then we can use `ls -a` to show all the folders + hidden folders.
 
-12. Then we can start using `sudo` code which basically means that we wanna get right premissions. We want to start using the web server:#####
+12. Then we can start using `sudo` code which basically means that we wanna get right permissions. We want to start using the web server:#####
 
-12. Now that we are in `vagrant@ubuntu-xenial` we can notice how the colours disappeared.
+13. Now that we are in `vagrant@ubuntu-xenial` we can notice how the colours disappeared.
 
-13. Being inside the VM we can run `sudo apt-get update -y`. This command will update the core function of our VM. Also comfirms the access to the Internet.
+14. Being inside the VM we can run `sudo apt-get update -y`. This command will update the core function of our VM. Also comfirms the access to the Internet.
 
-14. After we use `sudo apt-get install nginx -y` to install program for our website.
+15. After we use `sudo apt-get install nginx -y` to install program for our website.
 
-15. Next step is to use `sudo systemctl start nginx`. Lastly `sudo systemctl status nginx`.
+16. Next step is to use `sudo systemctl start nginx`. Lastly `sudo systemctl status nginx`.
 
-16. For easier access for developers we have to use this command `config.vm.network "private_network", ip:"192.168.10.100"`. (This gives our VM an IP address to access)
+17. For easier access for developers we have to use this command `config.vm.network "private_network", ip:"192.168.10.100"`. (This gives our VM an IP address to access)
 
-17. Then we can back out of the VM using `exit` command and use `vagrant reload` to reboot the VM.
+18. Then we can back out of the VM using `exit` command and use `vagrant reload` to reboot the VM.
 
 
 To connect to the machine vagrant ssh in git bash then we should be inside the machine 
@@ -118,6 +119,68 @@ Vagrant reload
 
 
 
-## Linux 
+
+
+We imported the *app* and *environment* into our directory with the vagrant file after destroying current machine.
+
+Then we use this code in our Vagrant file `config.vm.synced_folder "app", "/home/vagrant/app"` to specify what to work with(app) and where we want to go. 
+
+- We need to cd into `environment` and then cd into `spec-tests`
+
+
+- Then in the terminal we have to navigate to environment and spec test and then `gem install bundler`
+
+- Then run `bundle`
+
+- Then run `rake spec` to run the tests (check for any failures that need to be fixed)
+
+After that we need to fix all the errors we received in VS terminal. We do that in GitBash with following steps:
+
+- Then in GitBash we run `sudo apt-get update -y` to update packages
+
+- Then we run `sudo apt-get upgrade -y` to actually makes the changes that we updated (install changes)
+
+- Then we run `sudo apt-get install nginx -y`
+
+- After that we run   `sudo systemctl enable nginx` to enable the system. Then we can open our browser to double check if nginx is working properly by typing the IP address from our Vagrant file 
+
+Then we check the failures again `rake spec`
+
+ and we follow with these commands in GitBash: 
+
+ ### Install nodejs
+
+- `sudo apt-get install python-software-properties`
+
+- `curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -`
+
+- `sudo apt-get install nodejs -y`
+
+then we do `rake spec` again 
+
+
+then to fix the last failure we use this code 
+
+### Install pm2
+
+- ` sudo npm install pm2 -g`
+
+and then `rake spec` to see if we have anymore failures 
+
+then in have to `cd app`
+
+then `npm install`
+
+
+then `node app.js` (output: Your app is ready and listening on port 3000)
+)
+
+Then we go back to our browser and next our IP we input `:3000` as in the port that the app is working on
+
+
+
+
+
+
 
 
