@@ -76,7 +76,7 @@ That should print out the following message if the install was succesful `Vagran
 6. In GitBash you have to navigate to the right folder with `pwd` command.
 If you encounter a problem with that it could be an issue of the folder having a space in the name.
 
-Use `''` single quotes to cd(change directory) to the right folder. Please follow these instruction:
+In case your folder has a space in it, GitBash won't like to so use `''` single quotes to cd(change directory) to the right folder. Please follow these instruction:
 
 ![](iss.png)
 
