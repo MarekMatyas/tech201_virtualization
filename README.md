@@ -83,7 +83,7 @@ In case your folder has a space in it, GitBash won't like to so use `''` single 
 7. After that we can open back the GitBash and write a command `vagrant init ubuntu/xenial64`. This creates a file in VS code. Only configuration file (We haven't actually created a VM yet). This file contains instructions that are used to give to our Virtual Box.
 Enables us to standardize the dev environment that we are giving to our Developers.
 
-8. Now we want to test the functionality running `vagrant up` in GitBash. Check Oracle if the machine is running)
+8. Now we want to test the functionality running `vagrant up` in GitBash. (Check Oracle if the machine is running)
 
 9. Then we check the functionality `vagrant status`.
 
@@ -184,9 +184,67 @@ If the `app` folder exists in the current working directory, the command will ch
 - And lastly we go back to our web browser and next to our IP we input `:3000` as in the port that the app is working on.
 
 
+### To boot back up:
+
+- Open GitBash and cd into the `main`. Simply follow the path.
+
+- Once you are in the `main` use `vagrant up` to start up your VM. This could take a few seconds.
+
+- To get into the VM's  system use `vagrant ssh` which handles the security side of the process as well. 
+
+- To exit the VM's system simply write `exit` and this takes you back to you host OS system.
 
 
 
 
+
+# Provisioning 
+ 
+This allows us to install the necessary packages without entering the actuall VM's system. 
+
+- We created provision.sh (sh=shell) folder and this should be in the same directory as the Vagrant file. 
+
+- After that we need to ammend the Vagrant file instructing it to configure the VM's provision using "shell" and direct the path to the "provision.sh" folder as seen bellow:
+
+- `config.vm.provision "shell", path: "provision.sh"`
+
+![Vagrant_ammend](vagrant_file_change.png)
+
+
+### Then we move onto our "provision.sh" file
+
+- First of all we will need this code at the top `#!/bin/bash` and after we follow these steps:
+
+- `sudo apt-get update -y` `-y` is to automate the response to yes
+
+- `sudo apt-get upgrade -y` to upgrade 
+
+- `sudo apt-get install nginx -y` to install nginx
+
+ - `sudo systemctl enable nginx -y`  to enable nginx
+
+- go back to vagrant file `config.vm.provision "shell", path: "provision.sh"`. This specifies that we want to configure the VM's provision using "shell" and path to that will be the provision.sh file that we created where we will feed the install instructions.
+
+- then we run `vagrant up` in VS code
+
+- If you encounter this problem "The SSH command responded with a non-zero exit status. Vagrant
+assumes that this means the command failed. The output for this command
+should be in the log above. Please read the output to determine what
+went wrong"
+-  Then we open Gitbash and run `vagrant ssh` to enter the VM and  `ls` to check if the app folder is in.
+- Then we check if we have nginx installed by using `nginx -v`
+-   If you get this output `nginx version: nginx/1.10.3 (Ubuntu)` then you have nginx installed
+- Then we do `sudo systemctl status nginx`
+
+### Recap of the full process in the provision.sh
+
+
+![Provision](provisioning_steps.png)
+
+- Make sure you input all the codes that are shown in the picture above. 
+
+- When all the codes are put down you can use Bash terminal to destroy the current machine using `vagrant destroy` and then `vagrant up` to reboot the machine with the new installments.
+
+- To check the functionality we can open our web browser and type in the IP address we gave to the VM + the port that the app is working on. In this case "3000".
 
 
