@@ -28,8 +28,8 @@ We want to interact with our VM.
 
 - `ls -l` list premissions on files and folders ("l" long format)
 
-Absolute path is from the absolute base of the machine 
-Relative path is where I am right now 
+Absolute path is a complete path that starts from the root directory and specifies the exact location of a file or directory. 
+Relative path specifies the location of a file relative to the current directory. It does not include the complete directory structure and is relative to the current directory. 
 ***Absolute path***
 Linuc/Max
 /users/username/Documents/myfile.txt
