@@ -58,3 +58,27 @@ It started out as a web server designed for maximum performance and stability.
 
 # How to set up Nginx reverse proxy
 
+The reason why we would want reverse proxy is for **protection from attacks**. 
+
+With reverse proxy in place, a web site never needs to reveal the IP address of their origin servers. This makes it much harder for attackers to breach. 
+
+Let's have a look have we can implement that. 
+
+- First we have to navigate back to our VM's system in GitBash using `vagrant ssh`. 
+
+- When we are inside our VM we need to configure Nginx defautl setting using the following command `sudo nano /etc/nginx/sites-available/default`.
+
+- Then we need to navigate down the file and find a server block and replace is it the following code :
+
+![server_block](server_block.png)
+
+- We will have to change the port number as well. In our case it would be "3000".
+
+- To save and exit use `ctrl+x`, `y` for yes and enter.
+
+- Then, we use the following command `sudo nginx -t`
+
+- And lastly, we restart nginx program to ensure that the changes have been applied using `sudo systemctl restart nginx`
+
+- To check the functionality we try to enter the IP address we gave to our VM into our browser without the port number.
+
