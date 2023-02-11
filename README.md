@@ -248,3 +248,129 @@ went wrong"
 - To check the functionality we can open our web browser and type in the IP address we gave to the VM + the port that the app is working on. In this case "3000".
 
 
+
+# How to create two VM's using one vagrant file
+
+- Firstly, it is recommended to update the version of node in our app inside the provision.sh file using `curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -`
+
+- Don't forget to comment out the following lines off code in your provision.sh file as well for when you `vagrant up` the machines, these won't install automatically.
+
+
+![](comment.png)
+
+- We also need to update our Vagrant file to define the database as well as follows:
+
+- Note that to database VM we assigned a different IP address. You can use anything with ending below 255 and of course different from the app IP. Also each `end` in those code blocks relates to particular VM set up. The last `end` to wrap up the end of the file. 
+
+![vagrant_new](new_vagrant.png)
+
+
+- To set a new VM we need to use the following command `config.vm.define "database" do |database|`- "app" being the name that we want to give it, |database| being the pipes
+
+- We need to destroy any existing VM's "`vagrant destroy`" in our VS code bash terminal. 
+
+- Write `vagrant up` to boot up both machines. Make sure your Oracle V box is opened as admin and also to check if both machines are running correctly. This might take a while because of the provisioning we set. 
+
+![](both_vm.png)
+
+![](both_vm_2.png)
+
+- If we would like to destroy particular machine we can run either `vagrant destroy database` or `vagrant destroy app`
+
+
+
+- Next step is to make sure to open 2 separate GitBash terminals as admin and run `vagrant ssh app` on one terminal and `vagrant ssh database` on the other to enter both machines.
+
+
+
+![](two_vm.png)
+
+
+- To double check the correct location we can use `ls` in both terminals.
+
+
+![](ls.png)
+
+- We can also check if the provisioning was succesful in the "app" VM by using following commands: `nginx -v` and `node -v`.
+
+![](versions.png)
+
+
+- Inside the database machine we need to install the database and we will need a release key for that - `sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv D68FA50FEA312927  # A confirmation of import will be displayed`. This should return the confirmation of the import.
+
+- When everything is up to scratch so far we use `echo "deb https://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.2 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.2.list`. What this line does is letting us know that the Linux has the right properties to download Mongo.
+
+- After that we input `sudo apt-get update -y` to confirm any packages that can be downloaded.
+
+- Following with `sudo apt-get upgrade -y`. It does not matter if you upgrade before or after the release key. Make sure you don't use upgrade when doing in production environment. It can cause downtime. 
+
+- Now we are ready to install it using  `sudo apt-get install -y mongodb-org=3.2.20 mongodb-org-server=3.2.20 mongodb-org-shell=3.2.20 mongodb-org-mongos=3.2.20 mongodb-org-tools=3.2.20`
+
+- When it is installed we check the status using `sudo systemctl status mongod`
+
+- Following with `sudo systemctl start mongog`
+- `sudo systemctl status mongog`
+- `sudo systemctl enable mongog`
+
+
+- We also need to change the configuration of the `mongod.conf` in the folder called "etc" using this command `sudo nano /etc/mongod.conf`
+
+- What we need to look for is the network interface section. 
+
+- By default the bindIP will be 127.0.0.1 and we need to change that to 0.0.0.0 for any IP with any range could connect to it. This is not best practice for production environment. 
+
+![](mongo_conf.png)
+
+
+- After that we will need restart mongodb `sudo systemctl restart mongod` and following with enabling it `sudo systemctl enable mongod`
+- Now our database should be set up and we can check the status of it `sudo systemctl status mongod`
+
+![](active.png)
+
+
+Although it is active we are not connected yet. We open our app terminal. If we haven't entered the machine yet we do that using `vagrant ssh app` and then we need to make sure we cd (change directory) into the right location: `ls`, `cd app` `ls` and this should be the output. 
+
+![](cd_app.png)
+
+
+- If we have reached this point with no issues we have to create environmemt variable. This allows us to set a variable that is used to specify the information about the particular environmemt. 
+
+### Difference between the normal variable and environmemt variable
+
+Normal variable is only available in current process that you are running. Only accessible in the Bash terminal. 
+
+Environmemt variable is accessible from any environmemt. To print out all environmemt variable use `printenv`.
+
+
+*Now we need to create an environmemt variable. This allows the app VM to connect to the database VM.*
+
+- First we need to navigate back to app.js using `cd app` and check if we are in the right location `ls`. The following picture is what the output should be:
+
+![](cd_app2.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
