@@ -333,20 +333,87 @@ Although it is active we are not connected yet. We open our app terminal. If we 
 ![](cd_app.png)
 
 
-- If we have reached this point with no issues we have to create environmemt variable. This allows us to set a variable that is used to specify the information about the particular environmemt. 
 
-### Difference between the normal variable and environmemt variable
-
-Normal variable is only available in current process that you are running. Only accessible in the Bash terminal. 
-
-Environmemt variable is accessible from any environmemt. To print out all environmemt variable use `printenv`.
+- If we have reached this point with no issues we have to create environment variable. This allows us to set a variable that is used to specify the information about the particular environment. 
 
 
-*Now we need to create an environmemt variable. This allows the app VM to connect to the database VM.*
+### **Difference between the normal variable and environment variable**
+
+---
+
+***Normal variable*** is only available in current process that you are running. Only accessible in the Bash terminal. 
+
+
+
+***Environment variable*** is accessible from any environment. To print out all environment variable use `printenv`. By default, the environment variables are non-persistent.
+
+
+***Persistent variable*** stays in the environment even if the environment closes. Any variables that were made non-persistent will not exist anymore. Altought they will be destroyed if the destroy the machine. 
+
+
+
+**Now we need to create an environment variable that will be persistent. This allows the app VM to connect to the database VM.**
+
+
 
 - First we need to navigate back to app.js using `cd app` and check if we are in the right location `ls`. The following picture is what the output should be:
 
+
+
 ![](cd_app2.png)
+
+
+
+- Now we need to create an environment variable called `DB_HOST=mongodb://192.168.10.150:27017/posts` and the command for that would be simply adding `export` at the start of the variable. 
+
+
+- Another way we could do that is by using following code: `sudo nano .bashrc` to enter and edit this hidden file. If you wish to use this method you will have to back out of the app.js using `cd ..`.
+
+- To run a file `source .bashrc`
+
+- To showcase `printenv`. If we are looking for a specific variable we use `printenv DB_HOST`.
+
+We do this in order to specify where to go and connect to mongodb. We need to tell our app in some way where we want it to connect.
+
+- The next step is to navigate into our app.js `cd app`.
+
+![](cd_app2.png)
+
+
+- `npm install` this command will install our app
+
+
+This following command is running node.js file that the developers have made that sets up the database. In order to run that command we need to set up the connection (env variable) between our app and database. 
+
+
+![](seed.png)
+
+- **Almost done!** Another command we need to run is `node seeds/seed.js` where "seeds" being the folder and "seed.js" being the file.
+
+The output:
+
+
+![](seeds.png)
+ 
+
+## Note
+
+In the previous output the "Database seeded" means that the database is populated on the db machine. 
+
+Lastly, we run the app `node app.js`
+
+![](node_app.png)
+
+
+If you receive the output above then we are all up and running and we can check the functionality by opening our web browser, inputing the IP address we to our app VM + `/posts` at the end . Congrats!!
+
+
+The picture below indicates that it pulls the posts from the database because we have the connection and it can be displayed as so:
+This wouldn't happen if we didnt have the seed even thought the connection is running. 
+![](posts.png)
+
+
+
 
 
 
