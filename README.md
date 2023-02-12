@@ -405,7 +405,24 @@ Lastly, we run the app `node app.js`
 ![](node_app.png)
 
 
+
+
 If you receive the output above then we are all up and running and we can check the functionality by opening our web browser, inputing the IP address we to our app VM + `/posts` at the end . Congrats!!
+
+
+# Note
+
+In case you receive the following error when trying to run the `node app.js` app this means that you might have to kill certain processes. As we can see the port 3000 is already in use. The reason behind this could be that we ran the app before we created the variable to establish the connection. 
+
+![](node_error.png)
+
+To resolve this we have to use command `sudo lsof -9 :3000` which means to list out the current processes and at the end we specify the port number that was in use. 
+
+After the processes have been displayed we use `kill -9 5666` to kill the required process before can run the app again. 
+
+
+
+![](port_resolve.png)
 
 
 The picture below indicates that it pulls the posts from the database because we have the connection and it can be displayed as so:
