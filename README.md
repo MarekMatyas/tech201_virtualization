@@ -348,7 +348,7 @@ Although it is active we are not connected yet. We open our app terminal. If we 
 ***Environment variable*** is accessible from any environment. To print out all environment variable use `printenv`. By default, the environment variables are non-persistent.
 
 
-***Persistent variable*** stays in the environment even if the environment closes. Any variables that were made non-persistent will not exist anymore. Altought they will be destroyed if the destroy the machine. 
+***Persistent variable*** stays in the environment even if the environment closes. Any variables that were made non-persistent will not exist anymore. Altough they will be destroyed if the machine will be destroyed. 
 
 
 
