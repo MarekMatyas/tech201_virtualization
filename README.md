@@ -430,6 +430,17 @@ This wouldn't happen if we didnt have the seed even thought the connection is ru
 ![](posts.png)
 
 
+### Environment diagram
+
+![](environment_diagram.png)
+
+---
+
+### Folder diagram
+ 
+![](Folder_diagram.png)
+
+
 
 
 

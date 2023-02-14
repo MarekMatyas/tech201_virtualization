@@ -121,6 +121,8 @@ Then we will have to navigate into our app folder `cd app` and install `npm inst
 
 - We populate the database since the connection has been made `node seeds/seed.sj`
 
+- Lastly, we will have to run the app `node app.js`
+
 Lastly. we check the functionality in the browser
 
 
