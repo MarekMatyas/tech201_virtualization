@@ -12,3 +12,13 @@ sudo apt-get install -y mongodb-org=3.2.20 mongodb-org-server=3.2.20 mongodb-org
 
 sudo systemctl start mongod
 sudo systemctl enable mongod
+
+# Remove the default configuration 
+sudo rm /etc/mongod.conf
+
+# Copy our new configuration file caled mongodb_conf into the mongod.conf file 
+sudo cp environment/mongodb_conf /etc/mongod.conf
+
+# Then simply restart and enable 
+sudo systemctl restart mongod
+sudo systemctl enable mongod
