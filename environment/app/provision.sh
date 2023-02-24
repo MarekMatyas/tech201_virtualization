@@ -12,7 +12,7 @@ sudo rm /etc/nginx/sites-available/default
 # Copy the newly configured file (reverse_provision) into the default folder 
 sudo cp app/reverse_provision /etc/nginx/sites-available/default
 #Restart nginx
-sudo systemctl restart nginx -y
+sudo systemctl restart nginx
 
 
 # install nodejs
