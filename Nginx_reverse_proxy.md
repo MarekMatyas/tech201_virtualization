@@ -16,7 +16,7 @@ A forward proxy hides the client's IP and bypasses internet restrictions, while 
 A forward proxy are on the client's device or network, while reverse proxy sits between the client and the web server. 
 
 
-![proxy](proxy.png)
+![](pictures/proxy.png)
 
 # Ports
 
@@ -70,7 +70,7 @@ Let's have a look have we can implement that.
 
 - Then we need to navigate down the file and find a server block and replace is it the following code :
 
-![server_block](server_block.png)
+![](pictures/server_block.png)
 
 - We will have to change the port number as well. In our case it would be "3000".
 

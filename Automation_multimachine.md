@@ -10,7 +10,7 @@ First we will need to have 2 separate `provision.sh` files for app and database 
 
 This is a best practice for more readability. 
 
-![](two_files.png)
+![](pictures/two_files.png)
 
 
 
@@ -67,7 +67,7 @@ To check the functionality of the previous process we can run `vagrant up` in ou
 
 If we run `sudo systemctl status mongod` and everything went well so far this should be the output:
 
-![](mongo_status.png)
+![](pictures/mongo_status.png)
 
 
 Then we need to open another GitBash terminal as admin and `vagrant ssh app` into the app VM.
@@ -98,7 +98,7 @@ In this case we will call the new folder `mongodb_conf`. After that we can safel
 
 
 Bellow we can see the content of the `mongod.conf` file that we copied into our new `mongodb_conf` file and we change the bindIP to `0.0.0.0`
-![](mongo_content.png)
+![](pictures/mongo_content.png)
 
 Then we need to come back to our database provision file and add the following commands:
 

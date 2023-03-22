@@ -40,7 +40,7 @@ Cloud computing is a way of using the Internet to access and store information a
 ### ***Monotlith***
 A monolithic architecture is a singular, large computing network with one code base that couples all of the business concerns together.
 
-To make a change to this sort of application requires udating the entire stack by accessing the code base and building and deploying an updated version of the service-side interface.
+To make a change to this sort of application requires updating the entire stack by accessing the code base and building and deploying an updated version of the service-side interface.
 
 
 # Development Environments 
@@ -76,9 +76,13 @@ That should print out the following message if the install was succesful `Vagran
 6. In GitBash you have to navigate to the right folder with `pwd` command.
 If you encounter a problem with that it could be an issue of the folder having a space in the name.
 
-In case your folder has a space in it, GitBash won't like to so use `''` single quotes to cd(change directory) to the right folder. Please follow these instruction:
+---
+**Possible Blocker**:
+In case your folder has a space in it, GitBash won't like it so use `''` single quotes to cd(change directory) to the right folder. Please follow these instruction:
 
-![](iss.png)
+![](pictures/iss.png)
+
+---
 
 7. After that we can open back the GitBash and write a command `vagrant init ubuntu/xenial64`. This creates a file in VS code. Only configuration file (We haven't actually created a VM yet). This file contains instructions that are used to give to our Virtual Box.
 Enables us to standardize the dev environment that we are giving to our Developers.
@@ -107,15 +111,17 @@ Enables us to standardize the dev environment that we are giving to our Develope
 18. Then we can back out of the VM using `exit` command and use `vagrant reload` to reboot the VM.
 
 
-To connect to the machine vagrant ssh in git bash then we should be inside the machine 
+To connect to the VM use `vagrant ssh` in GitBash and this allows us to enter the VM.
 
- Sudo apt-get update -y downloads all the updates9 (confirms the access to internet)
- Sudo apt-get install nginx -y (installs programs)
+**Dependencies and reload**:
+```LINUX
+Sudo apt-get update -y downloads all the updates9 (confirms the access to internet)
+Sudo apt-get install nginx -y (installs programs)
 Sudo systemctl start nginx
 Sudo systemctl status nginx
 Exit
 Vagrant reload
-
+```
 
 
 
@@ -148,6 +154,8 @@ Then we use this code in our Vagrant file `config.vm.synced_folder "app", "/home
 - Then we check the failures again `rake spec`
 
  and we follow with these commands in GitBash: 
+
+---
 
  ### Install nodejs
 
@@ -208,7 +216,7 @@ This allows us to install the necessary packages without entering the actuall VM
 
 - `config.vm.provision "shell", path: "provision.sh"`
 
-![Vagrant_ammend](vagrant_file_change.png)
+![](pictures/vagrant_file_change.png)
 
 
 ### Then we move onto our "provision.sh" file
@@ -239,7 +247,7 @@ went wrong"
 ### Recap of the full process in the provision.sh
 
 
-![Provision](provisioning_steps.png)
+![](pictures/provisioning_steps.png)
 
 - Make sure you input all the codes that are shown in the picture above. 
 
@@ -256,13 +264,13 @@ went wrong"
 - Don't forget to comment out the following lines off code in your provision.sh file as well for when you `vagrant up` the machines, these won't install automatically.
 
 
-![](comment.png)
+![](pictures/comment.png)
 
 - We also need to update our Vagrant file to define the database as well as follows:
 
 - Note that to database VM we assigned a different IP address. You can use anything with ending below 255 and of course different from the app IP. Also each `end` in those code blocks relates to particular VM set up. The last `end` to wrap up the end of the file. 
 
-![vagrant_new](new_vagrant.png)
+![](pictures/new_vagrant.png)
 
 
 - To set a new VM we need to use the following command `config.vm.define "database" do |database|`- "app" being the name that we want to give it, |database| being the pipes
@@ -271,9 +279,9 @@ went wrong"
 
 - Write `vagrant up` to boot up both machines. Make sure your Oracle V box is opened as admin and also to check if both machines are running correctly. This might take a while because of the provisioning we set. 
 
-![](both_vm.png)
+![](pictures/both_vm.png)
 
-![](both_vm_2.png)
+![](pictures/both_vm_2.png)
 
 - If we would like to destroy particular machine we can run either `vagrant destroy database` or `vagrant destroy app`
 
@@ -283,17 +291,17 @@ went wrong"
 
 
 
-![](two_vm.png)
+![](pictures/two_vm.png)
 
 
 - To double check the correct location we can use `ls` in both terminals.
 
 
-![](ls.png)
+![](pictures/ls.png)
 
 - We can also check if the provisioning was succesful in the "app" VM by using following commands: `nginx -v` and `node -v`.
 
-![](versions.png)
+![](pictures/versions.png)
 
 
 - Inside the database machine we need to install the database and we will need a release key for that - `sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv D68FA50FEA312927  # A confirmation of import will be displayed`. This should return the confirmation of the import.
@@ -319,18 +327,18 @@ went wrong"
 
 - By default the bindIP will be 127.0.0.1 and we need to change that to 0.0.0.0 for any IP with any range could connect to it. This is not best practice for production environment. 
 
-![](mongo_conf.png)
+![](pictures/mongo_conf.png)
 
 
 - After that we will need restart mongodb `sudo systemctl restart mongod` and following with enabling it `sudo systemctl enable mongod`
 - Now our database should be set up and we can check the status of it `sudo systemctl status mongod`
 
-![](active.png)
+![](pictures/active.png)
 
 
 Although it is active we are not connected yet. We open our app terminal. If we haven't entered the machine yet we do that using `vagrant ssh app` and then we need to make sure we cd (change directory) into the right location: `ls`, `cd app` `ls` and this should be the output. 
 
-![](cd_app.png)
+![](pictures/cd_app.png)
 
 
 
@@ -360,7 +368,7 @@ Although it is active we are not connected yet. We open our app terminal. If we 
 
 
 
-![](cd_app2.png)
+![](pictures/cd_app2.png)
 
 
 
@@ -377,7 +385,7 @@ We do this in order to specify where to go and connect to mongodb. We need to te
 
 - The next step is to navigate into our app.js `cd app`.
 
-![](cd_app2.png)
+![](pictures/cd_app2.png)
 
 
 - `npm install` this command will install our app
@@ -386,14 +394,14 @@ We do this in order to specify where to go and connect to mongodb. We need to te
 This following command is running node.js file that the developers have made that sets up the database. In order to run that command we need to set up the connection (env variable) between our app and database. 
 
 
-![](seed.png)
+![](pictures/seed.png)
 
 - **Almost done!** Another command we need to run is `node seeds/seed.js` where "seeds" being the folder and "seed.js" being the file.
 
 The output:
 
 
-![](seeds.png)
+![](pictures/seeds.png)
  
 
 ## Note
@@ -402,7 +410,7 @@ In the previous output the "Database seeded" means that the database is populate
 
 Lastly, we run the app `node app.js`
 
-![](node_app.png)
+![](pictures/node_app.png)
 
 
 
@@ -414,7 +422,7 @@ If you receive the output above then we are all up and running and we can check 
 
 In case you receive the following error when trying to run the `node app.js` app this means that you might have to kill certain processes. As we can see the port 3000 is already in use. The reason behind this could be that we ran the app before we created the variable to establish the connection. 
 
-![](node_error.png)
+![](pictures/node_error.png)
 
 To resolve this we have to use command `sudo lsof -9 :3000` which means to list out the current processes and at the end we specify the port number that was in use. 
 
@@ -422,23 +430,24 @@ After the processes have been displayed we use `kill -9 5666` to kill the requir
 
 
 
-![](port_resolve.png)
+![](pictures/port_resolve.png)
 
 
 The picture below indicates that it pulls the posts from the database because we have the connection and it can be displayed as so:
-This wouldn't happen if we didnt have the seed even thought the connection is running. 
-![](posts.png)
+
+This wouldn't happen if we didn't have the seed even though the connection is running. 
+![](pictures/posts.png)
 
 
-### Environment diagram
+### Diagram of the Environment structure
 
-![](environment_diagram.png)
+![](pictures/environment_diagram.png)
 
 ---
 
-### Folder diagram
+### Diagram of the folder structure
  
-![](Folder_diagram.png)
+![](pictures/Folder_diagram.png)
 
 
 
