@@ -1,6 +1,6 @@
 # tech201_virtualization
-## Devops and Development Environmets
-New testing for fun 2 
+## Devops and Development Environments
+
 ## Introduction
 
 
@@ -115,12 +115,12 @@ To connect to the VM use `vagrant ssh` in GitBash and this allows us to enter th
 
 **Dependencies and reload**:
 ```LINUX
-Sudo apt-get update -y downloads all the updates9 (confirms the access to internet)
-Sudo apt-get install nginx -y (installs programs)
-Sudo systemctl start nginx
-Sudo systemctl status nginx
-Exit
-Vagrant reload
+sudo apt-get update -y downloads all the updates9 (confirms the access to internet)
+sudo apt-get install nginx -y (installs programs)
+sudo systemctl start nginx
+sudo systemctl status nginx
+exit
+vagrant reload
 ```
 
 
